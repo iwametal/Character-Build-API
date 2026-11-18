@@ -81,7 +81,7 @@ src/api/
 ### 3.2. Regras de ORM e Prevenção do Problema N+1 (Aula 09)
 - Use exclusivamente **SQLAlchemy 2.0** (`select()`, `Session.scalars()`, `Mapped[...]`, `mapped_column(...)`).
 - O relacionamento `1:N` entre `ProjectModel` (`projects`) e `TaskModel` (`tasks`) deve ser mapeado com `ForeignKey("projects.id")` e `relationship(...)`.
-- Ao consultar projetos ou tarefas vinculadas (`GET /api/v1/projects/{projectId}/tasks`), utilize estratégias adequadas de consulta e carregamento (`selectinload` / `joinedload`) para **evitar o problema de queries N+1**.
+- Ao consultar personagens ou outras rotas especificadas (`GET /api/v1/characters/{id}`), utilize estratégias adequadas de consulta e carregamento (`selectinload` / `joinedload`) para **evitar o problema de queries N+1**.
 - Toda operação de escrita (`POST`, `PATCH`, `DELETE`) deve gerenciar a transação explicitamente (`db.commit()`, `db.refresh()` ou `db.rollback()` em caso de falha).
 
 ### 3.3. Regras de Autenticação JWT e Autorização RBAC (Aula 08)
