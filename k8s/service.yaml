@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: character-build-service
+  namespace: character-build
+  labels:
+    app: character-build-api
+spec:
+  type: NodePort
+  selector:
+    app: character-build-api
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+      nodePort: 30080

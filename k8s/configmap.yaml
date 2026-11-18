@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: character-build-config
+  namespace: character-build
+  labels:
+    app: character-build-api
+data:
+  ENVIRONMENT: "kubernetes"
+  DATABASE_URL: "sqlite:////app/data/character-build.db"
+  PORT: "8000"
+  WORKERS: "1"

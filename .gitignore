@@ -1,0 +1,11 @@
+# environment
+.venv/
+
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# tests
+.pytest_cache/
+.pytest.ini

@@ -1,0 +1,5016 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Módulo predefinido",
+    "description": "API REST para gerenciamento de personagens, criaturas, equipamentos, habilidades e dados de referência de um RPG.",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Ability"
+    },
+    {
+      "name": "Armor"
+    },
+    {
+      "name": "Authentication"
+    },
+    {
+      "name": "Body-Parts"
+    },
+    {
+      "name": "Character"
+    },
+    {
+      "name": "Elements"
+    },
+    {
+      "name": "Genders"
+    },
+    {
+      "name": "Jobs"
+    },
+    {
+      "name": "Magic"
+    },
+    {
+      "name": "Monster"
+    },
+    {
+      "name": "Race"
+    },
+    {
+      "name": "Weapon"
+    },
+    {
+      "name": "Status-Effects"
+    },
+    {
+      "name": "Rarities"
+    }
+  ],
+  "paths": {
+    "/api/v1/abilities": {
+      "get": {
+        "summary": "Listar habilidades",
+        "deprecated": false,
+        "description": "Retorna todos os abilities cadastrados.",
+        "tags": [
+          "Ability"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de abilities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AbilityResponseSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Criar habilidade",
+        "deprecated": false,
+        "description": "Cadastra um novo ability. O ID é gerado pela API.",
+        "tags": [
+          "Ability"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AbilitySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Learn-ability criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AbilityResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/abilities/{id}": {
+      "get": {
+        "summary": "Obter habilidade",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Ability"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Learn-ability encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AbilityResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Substituir habilidade",
+        "deprecated": false,
+        "description": "Substitui integralmente os dados do ability.",
+        "tags": [
+          "Ability"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AbilitySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Learn-ability atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AbilityResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Atualizar habilidade",
+        "deprecated": false,
+        "description": "Altera apenas os campos enviados do ability.",
+        "tags": [
+          "Ability"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AbilitySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Learn-ability atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AbilityResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Excluir habilidade",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Ability"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Learn-ability excluído com sucesso.",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/armors": {
+      "post": {
+        "summary": "Criar armor",
+        "deprecated": false,
+        "description": "Cadastra um novo armor. O ID é gerado pela API.",
+        "tags": [
+          "Armor"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArmorSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Armor criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArmorResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Listar armors",
+        "deprecated": false,
+        "description": "Retorna todos os armors cadastrados.",
+        "tags": [
+          "Armor"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de armors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArmorResponseSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/armors/{id}": {
+      "get": {
+        "summary": "Obter armor por ID",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Armor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Armor encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArmorResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Substituir armor",
+        "deprecated": false,
+        "description": "Substitui integralmente os dados do armor.",
+        "tags": [
+          "Armor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArmorSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Armor atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArmorResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Atualizar armor parcialmente",
+        "deprecated": false,
+        "description": "Altera apenas os campos enviados do armor.",
+        "tags": [
+          "Armor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArmorSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Armor atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArmorResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Excluir armor",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Armor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Armor excluído com sucesso.",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "Authenticate user",
+        "deprecated": false,
+        "description": "Autentica um usuário e retorna um JWT Bearer Token. A implementação da validação das credenciais e da geração do JWT deve ser feita no backend.",
+        "operationId": "login",
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestSchema"
+              },
+              "example": {
+                "username": "admin",
+                "password": "minha-senha"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Login realizado com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseSchema"
+                },
+                "example": {
+                  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                  "token_type": "Bearer",
+                  "expires_in": 3600
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/body-parts/{id}": {
+      "get": {
+        "summary": "Get body-part",
+        "deprecated": false,
+        "description": "",
+        "operationId": "get_body_part",
+        "tags": [
+          "Body-Parts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do body-part.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Body-Part encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyPartSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Replace body-part",
+        "deprecated": false,
+        "description": "",
+        "operationId": "replace_body_part",
+        "tags": [
+          "Body-Parts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do body-part.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BodyPartSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Body-Part atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyPartSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update body-part partially",
+        "deprecated": false,
+        "description": "",
+        "operationId": "update_body_part",
+        "tags": [
+          "Body-Parts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do body-part.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BodyPartSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Body-Part atualizado parcialmente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyPartSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete body-part",
+        "deprecated": false,
+        "description": "",
+        "operationId": "delete_body_part",
+        "tags": [
+          "Body-Parts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do body-part.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Body-Part removido com sucesso.",
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/body-parts": {
+      "get": {
+        "summary": "List body-parts",
+        "deprecated": false,
+        "description": "",
+        "operationId": "list_body_parts",
+        "tags": [
+          "Body-Parts"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de body-parts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BodyPartSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create body-part",
+        "deprecated": false,
+        "description": "",
+        "operationId": "create_body_part",
+        "tags": [
+          "Body-Parts"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BodyPartSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Body-Part criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyPartSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/characters": {
+      "post": {
+        "summary": "Criar character",
+        "deprecated": false,
+        "description": "Cadastra um novo character. O ID é gerado pela API.",
+        "tags": [
+          "Character"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CharacterSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Character criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Listar characters",
+        "deprecated": false,
+        "description": "Retorna todos os characters cadastrados.",
+        "tags": [
+          "Character"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de characters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CharacterResponseSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/characters/{id}": {
+      "put": {
+        "summary": "Substituir character",
+        "deprecated": false,
+        "description": "Substitui integralmente os dados do character.",
+        "tags": [
+          "Character"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CharacterSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Character atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Obter character por ID",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Character"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Character encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Atualizar character parcialmente",
+        "deprecated": false,
+        "description": "Altera apenas os campos enviados do character.",
+        "tags": [
+          "Character"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CharacterSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Character atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Excluir character",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Character"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Character excluído com sucesso.",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/elements/{id}": {
+      "delete": {
+        "summary": "Delete element",
+        "deprecated": false,
+        "description": "",
+        "operationId": "delete_element",
+        "tags": [
+          "Elements"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do element.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Element removido com sucesso.",
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update element partially",
+        "deprecated": false,
+        "description": "",
+        "operationId": "update_element",
+        "tags": [
+          "Elements"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do element.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Element atualizado parcialmente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ElementSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get element",
+        "deprecated": false,
+        "description": "",
+        "operationId": "get_element",
+        "tags": [
+          "Elements"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do element.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Element encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ElementSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Replace element",
+        "deprecated": false,
+        "description": "",
+        "operationId": "replace_element",
+        "tags": [
+          "Elements"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do element.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Element atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ElementSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/elements": {
+      "get": {
+        "summary": "List elements",
+        "deprecated": false,
+        "description": "",
+        "operationId": "list_elements",
+        "tags": [
+          "Elements"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de elements.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ElementSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create element",
+        "deprecated": false,
+        "description": "",
+        "operationId": "create_element",
+        "tags": [
+          "Elements"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Element criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ElementSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/genders/{id}": {
+      "put": {
+        "summary": "Replace gender",
+        "deprecated": false,
+        "description": "",
+        "operationId": "replace_gender",
+        "tags": [
+          "Genders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do gender.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenderSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Gender atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get gender",
+        "deprecated": false,
+        "description": "",
+        "operationId": "get_gender",
+        "tags": [
+          "Genders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do gender.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gender encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update gender partially",
+        "deprecated": false,
+        "description": "",
+        "operationId": "update_gender",
+        "tags": [
+          "Genders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do gender.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenderSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Gender atualizado parcialmente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete gender",
+        "deprecated": false,
+        "description": "",
+        "operationId": "delete_gender",
+        "tags": [
+          "Genders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do gender.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Gender removido com sucesso.",
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/genders": {
+      "get": {
+        "summary": "List genders",
+        "deprecated": false,
+        "description": "",
+        "operationId": "list_genders",
+        "tags": [
+          "Genders"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de genders.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GenderSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create gender",
+        "deprecated": false,
+        "description": "",
+        "operationId": "create_gender",
+        "tags": [
+          "Genders"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenderSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Gender criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/jobs/{id}": {
+      "delete": {
+        "summary": "Delete job",
+        "deprecated": false,
+        "description": "",
+        "operationId": "delete_job",
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do job.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Job removido com sucesso.",
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get job",
+        "deprecated": false,
+        "description": "",
+        "operationId": "get_job",
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do job.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Job encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAttributesSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update job partially",
+        "deprecated": false,
+        "description": "",
+        "operationId": "update_job",
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do job.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobAttributesSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Job atualizado parcialmente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAttributesSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Replace job",
+        "deprecated": false,
+        "description": "",
+        "operationId": "replace_job",
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do job.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobAttributesSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Job atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAttributesSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/jobs": {
+      "get": {
+        "summary": "List jobs",
+        "deprecated": false,
+        "description": "",
+        "operationId": "list_jobs",
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de jobs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobAttributesSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create job",
+        "deprecated": false,
+        "description": "",
+        "operationId": "create_job",
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobAttributesSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Job criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAttributesSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/magics": {
+      "post": {
+        "summary": "Criar magic",
+        "deprecated": false,
+        "description": "Cadastra um novo magic. O ID é gerado pela API.",
+        "tags": [
+          "Magic"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MagicAbilitySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Magic criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagicResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Listar magics",
+        "deprecated": false,
+        "description": "Retorna todos os magics cadastrados.",
+        "tags": [
+          "Magic"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de magics.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MagicResponseSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/magics/{id}": {
+      "get": {
+        "summary": "Obter magic por ID",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Magic"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Magic encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagicResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Substituir magic",
+        "deprecated": false,
+        "description": "Substitui integralmente os dados do magic.",
+        "tags": [
+          "Magic"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MagicAbilitySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Magic atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagicResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Atualizar magic parcialmente",
+        "deprecated": false,
+        "description": "Altera apenas os campos enviados do magic.",
+        "tags": [
+          "Magic"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MagicAbilitySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Magic atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagicResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Excluir magic",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Magic"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Magic excluído com sucesso.",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/monsters": {
+      "get": {
+        "summary": "Listar monsters",
+        "deprecated": false,
+        "description": "Retorna todos os monsters cadastrados.",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de monsters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MonsterResponseSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Criar monster",
+        "deprecated": false,
+        "description": "Cadastra um novo monster. O ID é gerado pela API.",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MonsterSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Monster criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonsterResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/monsters/{id}": {
+      "get": {
+        "summary": "Obter monster por ID",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Monster encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonsterResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Substituir monster",
+        "deprecated": false,
+        "description": "Substitui integralmente os dados do monster.",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MonsterSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Monster atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonsterResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Atualizar monster parcialmente",
+        "deprecated": false,
+        "description": "Altera apenas os campos enviados do monster.",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MonsterSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Monster atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonsterResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Excluir monster",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Monster"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Monster excluído com sucesso.",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/races": {
+      "get": {
+        "summary": "Listar races",
+        "deprecated": false,
+        "description": "Retorna todos os races cadastrados.",
+        "tags": [
+          "Race"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de races.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RaceResponseSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Criar race",
+        "deprecated": false,
+        "description": "Cadastra um novo race. O ID é gerado pela API.",
+        "tags": [
+          "Race"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RaceSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Race criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaceResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/races/{id}": {
+      "get": {
+        "summary": "Obter race por ID",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Race"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Race encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaceResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Substituir race",
+        "deprecated": false,
+        "description": "Substitui integralmente os dados do race.",
+        "tags": [
+          "Race"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RaceSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Race atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaceResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Atualizar race parcialmente",
+        "deprecated": false,
+        "description": "Altera apenas os campos enviados do race.",
+        "tags": [
+          "Race"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RaceSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Race atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaceResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Excluir race",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Race"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Race excluído com sucesso.",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/weapons": {
+      "get": {
+        "summary": "Listar weapons",
+        "deprecated": false,
+        "description": "Retorna todos os weapons cadastrados.",
+        "tags": [
+          "Weapon"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de weapons.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeaponResponseSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Criar weapon",
+        "deprecated": false,
+        "description": "Cadastra um novo weapon. O ID é gerado pela API.",
+        "tags": [
+          "Weapon"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeaponSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Weapon criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeaponResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/weapons/{id}": {
+      "get": {
+        "summary": "Obter weapon por ID",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Weapon"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Weapon encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeaponResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Substituir weapon",
+        "deprecated": false,
+        "description": "Substitui integralmente os dados do weapon.",
+        "tags": [
+          "Weapon"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeaponSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Weapon atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeaponResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Atualizar weapon parcialmente",
+        "deprecated": false,
+        "description": "Altera apenas os campos enviados do weapon.",
+        "tags": [
+          "Weapon"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeaponSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Weapon atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeaponResponseSchema"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Excluir weapon",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Weapon"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do id.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Weapon excluído com sucesso.",
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/status-effects/{id}": {
+      "get": {
+        "summary": "Get status-effect",
+        "deprecated": false,
+        "description": "",
+        "operationId": "get_status_effect",
+        "tags": [
+          "Status-Effects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do status-effect.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status-Effect encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusEffectSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Replace status-effect",
+        "deprecated": false,
+        "description": "",
+        "operationId": "replace_status_effect",
+        "tags": [
+          "Status-Effects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do status-effect.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusEffectSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Status-Effect atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusEffectSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update status-effect partially",
+        "deprecated": false,
+        "description": "",
+        "operationId": "update_status_effect",
+        "tags": [
+          "Status-Effects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do status-effect.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusEffectSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Status-Effect atualizado parcialmente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusEffectSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete status-effect",
+        "deprecated": false,
+        "description": "",
+        "operationId": "delete_status_effect",
+        "tags": [
+          "Status-Effects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do status-effect.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Status-Effect removido com sucesso.",
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/status-effects": {
+      "get": {
+        "summary": "List status-effects",
+        "deprecated": false,
+        "description": "",
+        "operationId": "list_status_effects",
+        "tags": [
+          "Status-Effects"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de status-effects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StatusEffectSchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create status-effect",
+        "deprecated": false,
+        "description": "",
+        "operationId": "create_status_effect",
+        "tags": [
+          "Status-Effects"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StatusEffectSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Status-Effect criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusEffectSchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/rarities/{id}": {
+      "put": {
+        "summary": "Replace rarity",
+        "deprecated": false,
+        "description": "",
+        "operationId": "replace_rarity",
+        "tags": [
+          "Rarities"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do rarity.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RaritySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Rarity atualizado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaritySchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get rarity",
+        "deprecated": false,
+        "description": "",
+        "operationId": "get_rarity",
+        "tags": [
+          "Rarities"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do rarity.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rarity encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaritySchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update rarity partially",
+        "deprecated": false,
+        "description": "",
+        "operationId": "update_rarity",
+        "tags": [
+          "Rarities"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do rarity.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RaritySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Rarity atualizado parcialmente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaritySchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete rarity",
+        "deprecated": false,
+        "description": "",
+        "operationId": "delete_rarity",
+        "tags": [
+          "Rarities"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do rarity.",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Rarity removido com sucesso.",
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/rarities": {
+      "get": {
+        "summary": "List rarities",
+        "deprecated": false,
+        "description": "",
+        "operationId": "list_rarities",
+        "tags": [
+          "Rarities"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista de rarities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RaritySchema"
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create rarity",
+        "deprecated": false,
+        "description": "",
+        "operationId": "create_rarity",
+        "tags": [
+          "Rarities"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RaritySchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Rarity criado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaritySchema"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized",
+            "description": "Autenticação necessária ou token inválido."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "Recurso não encontrado."
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError",
+            "description": "Erro interno do servidor."
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AbilityResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "long",
+            "description": "ID"
+          },
+          "character": {
+            "$ref": "#/components/schemas/CharacterResponseSchema",
+            "description": "Personagem"
+          },
+          "magic": {
+            "$ref": "#/components/schemas/MagicAbilityResponseSchema",
+            "description": "Magia"
+          },
+          "physical": {
+            "$ref": "#/components/schemas/PhysicalAbilityResponseSchema",
+            "description": "Fisico"
+          }
+        },
+        "required": [
+          "id",
+          "character"
+        ],
+        "anyOf": [
+          {
+            "required": [
+              "magic"
+            ]
+          },
+          {
+            "required": [
+              "physical"
+            ]
+          }
+        ]
+      },
+      "AbilitySchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "long",
+            "description": "ID"
+          },
+          "character": {
+            "type": "integer",
+            "format": "long",
+            "description": "Personagem criado"
+          },
+          "magic": {
+            "type": "integer",
+            "format": "long",
+            "description": "Habilidade magica do personagem",
+            "nullable": true
+          },
+          "physical": {
+            "type": "integer",
+            "format": "long",
+            "description": "Habilidade fisica do personagem",
+            "nullable": true
+          }
+        }
+      },
+      "ArmorResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "body_part": {
+            "$ref": "#/components/schemas/BodyPartSchema",
+            "description": "parte do corpo aonde vai a item"
+          },
+          "atk": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "format": "int32",
+            "description": "bonus que recebe de ataque por conta do item"
+          },
+          "def": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "bonus que recebe de defesa por conta do item"
+          },
+          "hp": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "bonus que recebe de hp por conta do item"
+          },
+          "intelligence": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "bonus que recebe de inteligencia por conta do item"
+          },
+          "vigor": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "bonus que recebe de vigor por conta do item"
+          },
+          "rarity": {
+            "$ref": "#/components/schemas/RaritySchema",
+            "description": "raridade do item"
+          }
+        },
+        "required": [
+          "id",
+          "body_part",
+          "atk",
+          "def",
+          "hp",
+          "intelligence",
+          "vigor",
+          "rarity"
+        ]
+      },
+      "ArmorSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "body_part": {
+            "type": "integer",
+            "format": "int32",
+            "description": "parte do corpo aonde vai a item"
+          },
+          "atk": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "format": "int32",
+            "description": "bonus que recebe de ataque por conta do item"
+          },
+          "def": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "bonus que recebe de defesa por conta do item"
+          },
+          "hp": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "bonus que recebe de hp por conta do item"
+          },
+          "intelligence": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "bonus que recebe de inteligencia por conta do item"
+          },
+          "vigor": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "bonus que recebe de vigor por conta do item"
+          },
+          "rarity": {
+            "type": "integer",
+            "format": "int32",
+            "description": "raridade do item"
+          }
+        }
+      },
+      "BodyPartSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "description": "ID"
+          },
+          "body_part": {
+            "type": "string",
+            "enum": [
+              "arm",
+              "chest",
+              "head",
+              "hip",
+              "leg",
+              "shoulder"
+            ],
+            "description": "parte do corpo aonde vai a item"
+          }
+        }
+      },
+      "CharacterResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID",
+            "format": "uuid"
+          },
+          "age": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "format": "int32",
+            "description": "Idade do personagem"
+          },
+          "extra_mana": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "default": 0,
+            "format": "int32",
+            "description": "Quantidade de mana que se tem extra"
+          },
+          "gender": {
+            "$ref": "#/components/schemas/GenderSchema",
+            "description": "Genêro (masculino/Feminino)"
+          },
+          "job": {
+            "$ref": "#/components/schemas/JobAttributesSchema",
+            "description": "A classe do personagem"
+          },
+          "last_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "Sobrenome"
+          },
+          "level": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Level incial do personagem"
+          },
+          "name": {
+            "type": "string",
+            "description": "nome",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "race": {
+            "$ref": "#/components/schemas/RaceSchema",
+            "description": "A raça do personagem"
+          }
+        },
+        "required": [
+          "id",
+          "last_name",
+          "race",
+          "name",
+          "job",
+          "gender",
+          "age",
+          "level"
+        ]
+      },
+      "CharacterSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID",
+            "format": "uuid"
+          },
+          "age": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "format": "int32",
+            "description": "Idade do personagem"
+          },
+          "extra_mana": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "default": 0,
+            "format": "int32",
+            "description": "Quantidade de mana que se tem extra"
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Genêro (masculino/Feminino)"
+          },
+          "job": {
+            "type": "integer",
+            "format": "long",
+            "description": "A classe do personagem"
+          },
+          "last_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "Sobrenome"
+          },
+          "level": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Level incial do personagem"
+          },
+          "name": {
+            "type": "string",
+            "description": "Nome",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "race": {
+            "type": "integer",
+            "format": "long",
+            "description": "A raça do personagem"
+          }
+        }
+      },
+      "ElementResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "element": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50,
+            "description": "Água,fogo,ar,terra,etc será usado para magia"
+          },
+          "strength": {
+            "$ref": "#/components/schemas/ElementSchema",
+            "description": "Bônus de um elemento contra outro"
+          },
+          "weakness": {
+            "$ref": "#/components/schemas/ElementSchema",
+            "description": "Fraqueza/Debuff de um elemento contra outro"
+          }
+        },
+        "required": [
+          "id",
+          "element"
+        ]
+      },
+      "ElementSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "element": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50,
+            "description": "Água,fogo,ar,terra,etc será usado para magia"
+          },
+          "strength": {
+            "type": "integer",
+            "format": "long",
+            "description": "Bônus de um elemento contra outro"
+          },
+          "weakness": {
+            "type": "integer",
+            "format": "long",
+            "description": "Fraqueza/Debuff de um elemento contra outro"
+          }
+        }
+      },
+      "ErrorResponseSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "minimum": 400,
+            "maximum": 599,
+            "description": "estado"
+          },
+          "code": {
+            "type": "string",
+            "description": "codigo do erro"
+          },
+          "message": {
+            "type": "string",
+            "description": "Mensagem do erro"
+          },
+          "details": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {},
+            "description": "Detalhes do erro"
+          }
+        },
+        "required": [
+          "status",
+          "code",
+          "message"
+        ]
+      },
+      "GenderSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "int32"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ],
+            "description": "Masculino e Feminino"
+          }
+        }
+      },
+      "JobAttributesSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "job": {
+            "type": "string",
+            "enum": [
+              "archer",
+              "warrior",
+              "knight",
+              "mage",
+              "summoner",
+              "necromancer",
+              "healer"
+            ],
+            "description": "Classe do personagem"
+          },
+          "atk": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": "Bônus de ataque do personagem com base no job"
+          },
+          "def": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": "Bônus de defesa do personagem com base no job"
+          },
+          "hp": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": "Bônus de hp do personagem com base no job"
+          },
+          "vigor": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": "Bônus de vigor do personagem com base no job"
+          },
+          "intelligence": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": "Bônus de inteligência do personagem com base no job"
+          }
+        }
+      },
+      "JobResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "job": {
+            "type": "string",
+            "enum": [
+              "archer",
+              "warrior",
+              "knight",
+              "mage",
+              "summoner",
+              "necromancer",
+              "healer"
+            ],
+            "description": "Classe do personagem"
+          },
+          "atk": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": " Bônus de ataque com base na classe"
+          },
+          "def": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": " Bônus de defesa com base na classe"
+          },
+          "hp": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": " Bônus de hp com base na classe"
+          },
+          "intelligence": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": " Bônus de inteligência com base na classe"
+          },
+          "vigor": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "format": "int32",
+            "description": " Bônus de vigor com base na classe"
+          }
+        },
+        "required": [
+          "job",
+          "hp",
+          "atk",
+          "def",
+          "intelligence",
+          "vigor",
+          "id"
+        ],
+        "title": "JobResponse"
+      },
+      "MagicAbilityResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID"
+          },
+          "magic": {
+            "type": "string",
+            "description": "Magia"
+          },
+          "damage": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Dano da magia"
+          },
+          "element": {
+            "$ref": "#/components/schemas/ElementSchema",
+            "description": "Elemento da magia"
+          },
+          "lv_required": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Level mínimo para pegar a magia"
+          },
+          "mana_consumption": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Quantidade de mana que a magia consome"
+          },
+          "shield": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bônus de defesa magia"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusEffectSchema",
+            "description": "estado"
+          }
+        },
+        "required": [
+          "id",
+          "magic",
+          "lv_required",
+          "element",
+          "damage",
+          "mana_consumption",
+          "shield"
+        ]
+      },
+      "MagicAbilitySchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID"
+          },
+          "magic": {
+            "type": "string",
+            "description": "Magia"
+          },
+          "damage": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Dano da magia"
+          },
+          "element": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Elemento da magia"
+          },
+          "lv_required": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Level mínimo para pegar a magia"
+          },
+          "mana_consumption": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Quantidade de mana que a magia consome"
+          },
+          "shield": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bônus de defesa magia"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "estado"
+          }
+        }
+      },
+      "MagicResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID"
+          },
+          "magic": {
+            "type": "string",
+            "description": "Magia"
+          },
+          "damage": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Dano da magia"
+          },
+          "element": {
+            "$ref": "#/components/schemas/ElementSchema",
+            "description": "Elemento da magia"
+          },
+          "lv_required": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Level mínimo para pegar a magia"
+          },
+          "mana_consumption": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Quantidade de mana que a magia consome"
+          },
+          "shield": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bônus de defesa magia"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusEffectSchema",
+            "description": "estado"
+          }
+        },
+        "required": [
+          "id",
+          "magic",
+          "lv_required",
+          "element",
+          "damage",
+          "mana_consumption",
+          "shield"
+        ],
+        "title": "MagicResponse"
+      },
+      "MonsterResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "nome"
+          },
+          "race": {
+            "$ref": "#/components/schemas/RaceSchema",
+            "description": "A raça do monstro"
+          },
+          "atk": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Ataque"
+          },
+          "def": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Defesa "
+          },
+          "hp": {
+            "type": "integer",
+            "format": "int32",
+            "description": "HP"
+          },
+          "intelligence": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Inteligencia"
+          },
+          "vigor": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Vigor"
+          }
+        },
+        "required": [
+          "id",
+          "race",
+          "atk",
+          "def",
+          "hp",
+          "intelligence",
+          "vigor"
+        ],
+        "title": "MonsterResponse"
+      },
+      "MonsterSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "nome"
+          },
+          "race": {
+            "type": "string",
+            "description": "A raça do personagem"
+          },
+          "atk": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Ataque"
+          },
+          "def": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Defesa "
+          },
+          "hp": {
+            "type": "integer",
+            "format": "int32",
+            "description": "HP"
+          },
+          "intelligence": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Inteligencia"
+          },
+          "vigor": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Vigor"
+          }
+        }
+      },
+      "LoginRequestSchema": {
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "properties": {
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Usuário ou identificador usado para autenticação."
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "minLength": 1,
+            "description": "Senha do usuário."
+          }
+        }
+      },
+      "LoginResponseSchema": {
+        "type": "object",
+        "required": [
+          "access_token",
+          "token_type"
+        ],
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "JWT usado para autenticar as próximas requisições."
+          },
+          "token_type": {
+            "type": "string",
+            "description": "Tipo Token",
+            "example": "Bearer"
+          },
+          "expires_in": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Tempo de expiração do token em segundos."
+          }
+        }
+      },
+      "PhysicalAbilityResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "damage": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Dano da habilidade"
+          },
+          "lv_required": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Level minimo para ter a habilidade"
+          },
+          "shield": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Escudo da Habilidade"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusEffectSchema",
+            "description": "estado"
+          }
+        },
+        "required": [
+          "id",
+          "damage",
+          "lv_required",
+          "shield"
+        ]
+      },
+      "PhysicalAbilitySchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "damage": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Dano da Habilidade"
+          },
+          "lv_required": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Level minimo para ter a Habilidade"
+          },
+          "shield": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Escudo dado pela habilidade"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "estado"
+          }
+        },
+        "required": [
+          "id",
+          "damage",
+          "lv_required",
+          "shield"
+        ]
+      },
+      "RaceResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "race": {
+            "type": "string",
+            "enum": [
+              "elf",
+              "human",
+              "giant",
+              "vampire",
+              "goblin",
+              "undead",
+              "dwarf"
+            ],
+            "description": "Raça"
+          },
+          "atk": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Ataque"
+          },
+          "def": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Defesa"
+          },
+          "hp": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "format": "int32",
+            "description": "HP"
+          },
+          "intelligence": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Inteligencia"
+          },
+          "mana": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "maximum": 500,
+            "description": "Mana"
+          },
+          "vigor": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Vigor"
+          }
+        },
+        "required": [
+          "race",
+          "hp",
+          "intelligence",
+          "vigor",
+          "id",
+          "mana",
+          "atk",
+          "def"
+        ],
+        "title": "RaceResponse"
+      },
+      "RaceSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "long"
+          },
+          "race": {
+            "type": "string",
+            "enum": [
+              "elf",
+              "human",
+              "giant",
+              "vampire",
+              "goblin",
+              "undead",
+              "dwarf"
+            ],
+            "description": "Race"
+          },
+          "atk": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Ataque"
+          },
+          "def": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Defesa"
+          },
+          "hp": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "format": "int32",
+            "description": "Hp"
+          },
+          "intelligence": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Inteligencia"
+          },
+          "mana": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "maximum": 500,
+            "description": "Mana"
+          },
+          "vigor": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Vigor"
+          }
+        }
+      },
+      "RaritySchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "int32"
+          },
+          "rarity": {
+            "type": "string",
+            "enum": [
+              "common",
+              "uncommon",
+              "rare",
+              "epic",
+              "legendary"
+            ],
+            "description": "Raridade "
+          }
+        }
+      },
+      "StatusEffectSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "description": "ID"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "buff_atack",
+              "buff_defense",
+              "buff_magic",
+              "heal",
+              "sleep",
+              "stun"
+            ],
+            "description": "estado"
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Duração do efeito"
+          }
+        }
+      },
+      "WeaponSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "nome da arma"
+          },
+          "atk": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Ataque"
+          },
+          "def": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Defesa"
+          },
+          "hp": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de HP"
+          },
+          "intelligence": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Inteligencia"
+          },
+          "vigor": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Vigor"
+          },
+          "magic": {
+            "type": "integer",
+            "format": "long",
+            "description": "Bonus Magico"
+          }
+        }
+      },
+      "WeaponResponseSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "Nome da arma"
+          },
+          "atk": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Ataque"
+          },
+          "def": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Defesa"
+          },
+          "hp": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Hp"
+          },
+          "intelligence": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Inteligencia"
+          },
+          "vigor": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 1000,
+            "description": "Bonus de Vigor"
+          },
+          "magic": {
+            "$ref": "#/components/schemas/MagicAbilityResponseSchema",
+            "description": "Bonus Magico"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "atk",
+          "def",
+          "hp",
+          "intelligence",
+          "vigor"
+        ],
+        "title": "WeaponResponse"
+      }
+    },
+    "responses": {
+      "Erro": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Autenticação necessária ou token inválido.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponseSchema"
+            },
+            "examples": {
+              "Success": {
+                "summary": "Success",
+                "value": {
+                  "status": 401,
+                  "message": "Autenticação necessária ou token inválido."
+                }
+              }
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Recurso não encontrado.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponseSchema"
+            },
+            "examples": {
+              "Success": {
+                "summary": "Success",
+                "value": {
+                  "status": 404,
+                  "message": "Recurso não encontrado."
+                }
+              }
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Erro interno do servidor.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponseSchema"
+            },
+            "examples": {
+              "Success": {
+                "summary": "Success",
+                "value": {
+                  "status": 500,
+                  "message": "Erro interno do servidor."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT Bearer Token. Envie o token no header Authorization: Bearer <token>."
+      }
+    }
+  },
+  "servers": [],
+  "security": []
+}

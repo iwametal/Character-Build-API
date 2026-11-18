@@ -1,0 +1,33 @@
+# ==============================================================================
+# .gitflow — Estratégia de Branches e Governança Gitflow (Character Build API v2)
+# ==============================================================================
+# Referência de configuração para uso com `git flow init` ou fluxo manual Git.
+#
+# Topologia de Branches:
+#   - main      : Produção estável. Aceita apenas PRs de release/* ou hotfix/*.
+#                 Dispara o pipeline `.github/workflows/cd-production.yml`.
+#   - develop   : Integração contínua (Staging/Homologação). Base para features.
+#                 Dispara o pipeline `.github/workflows/cd-staging.yml`.
+#   - feature/* : Novas funcionalidades derivadas de `develop` (merge -> develop).
+#   - bugfix/*  : Correções não emergenciais derivadas de `develop` (merge -> develop).
+#   - release/* : Preparação de versão derivada de `develop` (merge -> main + develop + tag vX.Y.Z).
+#   - hotfix/*  : Correções críticas em produção derivadas de `main` (merge -> main + develop).
+#   - support/* : Manutenção de versões legadas (opcional).
+#
+# Regras Recomendadas de Branch Protection no GitHub (main e develop):
+#   - Require a pull request before merging (mínimo 1 aprovação)
+#   - Require status checks to pass before merging (CI: quality-and-lint, unit-and-contract-tests, docker-build-validation)
+#   - Require linear history / disallow force pushes / disallow deletions
+# ==============================================================================
+
+[gitflow "branch"]
+	master = main
+	develop = develop
+
+[gitflow "prefix"]
+	feature = feature/
+	bugfix = bugfix/
+	release = release/
+	hotfix = hotfix/
+	support = support/
+	versiontag = v

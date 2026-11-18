@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: character-build
+  labels:
+    app.kubernetes.io/name: character-build
+    app.kubernetes.io/part-of: character-build-api
