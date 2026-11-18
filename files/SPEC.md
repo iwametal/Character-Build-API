@@ -48,12 +48,12 @@ A camada de persistência (`src/api/models.py` e `src/api/database.py`) deve uti
 | `Rotas de POST, PATCH e PUT` | Autenticado (`MEMBER` ou `ADMIN`) | Retorna `401 Unauthorized` (RFC 9457) se o token JWT estiver ausente, inválido ou expirado. |
 | **`Rotas de DELETE`** | **Exclusivo `ADMIN`** | Retorna `401 Unauthorized` se sem token, e **`403 Forbidden` (RFC 9457)** caso o usuário autenticado possua role `MEMBER`. |
 
-### 4.3. Comportamento Funcional de `Tasks` e `Projects`
+### 4.3. Comportamento Funcional das rotas
 - **`Rotas de GET`**: Paginação no banco via ORM (`offset`/`limit`), filtros por `status`, `priority` e busca case-insensitive (`ILIKE` / `lower()`) em `title` e `description`.
-- **`Rotas de POST`**: Persiste no SQLite via SQLAlchemy, retorna `201 Created` e define o cabeçalho `Location: /api/v1/tasks/{id}`. Se `projectId` for informado e não existir no banco, retorna `404 Not Found` (RFC 9457).
+- **`Rotas de POST`**: Persiste no SQLite via SQLAlchemy, retorna `201 Created` e define o cabeçalho `Location: /api/v1/characters/{id}`. Se `id` for informado e não existir no banco, retorna `404 Not Found` (RFC 9457).
 - **`Rotas de PUT e PATCH`**: Atualiza parcialmente no banco e renova `updatedAt`.
 - **`Rotas de DELETE`**: Restrito a `ADMIN`. Remove do banco e retorna `204 No Content`.
-- **`Rotas de GET`**: Usa `selectinload(ProjectModel.tasks)` para buscar o projeto e retornar `{ "data": List[Object] }` (ou `404` se o projeto não existir).
+- **`Rotas de GET`**: Usa `selectinload(Characters.tasks)` para buscar o projeto e retornar `{ "data": List[Object] }` (ou `404` se o projeto não existir).
 
 ### 4.4. Seed Inicial do Banco de Dados e Expectations
 A função de `seed` executada na inicialização do banco deve garantir a criação idempotente de:
