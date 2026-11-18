@@ -110,6 +110,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"character\": 1,\n    \"magic\": 1,\n    \"physical\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -285,6 +286,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"character\": 1,\n    \"magic\": null,\n    \"physical\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -388,6 +390,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"character\": 1,\n    \"magic\": null,\n    \"physical\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -604,6 +607,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"body_part\": 1,\n    \"atk\": 1,\n    \"def\": 1,\n    \"hp\": 1,\n    \"intelligence\": 1,\n    \"vigor\": 1,\n    \"rarity\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -851,6 +855,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"body_part\": 1,\n    \"atk\": 1,\n    \"def\": 1,\n    \"hp\": 1,\n    \"intelligence\": 1,\n    \"vigor\": 1,\n    \"rarity\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -954,6 +959,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"body_part\": 1,\n    \"atk\": 1,\n    \"def\": 1,\n    \"hp\": 1,\n    \"intelligence\": 1,\n    \"vigor\": 1,\n    \"rarity\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -1354,6 +1360,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"body_part\": \"leg\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -1457,6 +1464,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"body_part\": \"hip\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -1720,6 +1728,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"body_part\": \"chest\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -1832,6 +1841,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"age\": 1,\n    \"extra_mana\": 1,\n    \"gender\": 1,\n    \"job\": 1,\n    \"last_name\": \"Costa\",\n    \"level\": 1,\n    \"name\": \"Cecília\",\n    \"race\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -1991,6 +2001,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"age\": 1,\n    \"extra_mana\": 1,\n    \"gender\": 1,\n    \"job\": 1,\n    \"last_name\": \"Pereira\",\n    \"level\": 1,\n    \"name\": \"Isis\",\n    \"race\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -2182,6 +2193,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"age\": 1,\n    \"extra_mana\": 1,\n    \"gender\": 1,\n    \"job\": 1,\n    \"last_name\": \"Nogueira\",\n    \"level\": 1,\n    \"name\": \"Warley\",\n    \"race\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -2486,6 +2498,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"element\": \"consequat\",\n    \"strength\": 1,\n    \"weakness\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -2677,6 +2690,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"element\": \"fire\",\n    \"strength\": 1,\n    \"weakness\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -2852,6 +2866,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"element\": \"water\",\n    \"strength\": 1,\n    \"weakness\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -2964,6 +2979,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"gender\": \"female\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -3155,6 +3171,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"gender\": \"male\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -3418,6 +3435,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"gender\": \"female\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -3706,6 +3724,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"job\": \"warrior\",\n    \"atk\": 27,\n    \"def\": 55,\n    \"hp\": 43,\n    \"vigor\": 4,\n    \"intelligence\": 9\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -3809,6 +3828,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"job\": \"necromancer\",\n    \"atk\": 3,\n    \"def\": 25,\n    \"hp\": 23,\n    \"vigor\": 96,\n    \"intelligence\": 11\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -3984,6 +4004,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"job\": \"summoner\",\n    \"atk\": 96,\n    \"def\": 21,\n    \"hp\": 69,\n    \"vigor\": 54,\n    \"intelligence\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -4096,6 +4117,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"magic\": \"in dolore pariatur\",\n    \"damage\": 452,\n    \"element\": 1,\n    \"lv_required\": 24,\n    \"mana_consumption\": 344,\n    \"shield\": 0,\n    \"status\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -4343,6 +4365,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"magic\": \"amet in cillum consectetur\",\n    \"damage\": 1,\n    \"element\": 2,\n    \"lv_required\": 21,\n    \"mana_consumption\": 610,\n    \"shield\": 809,\n    \"status\": 0\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -4446,6 +4469,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"magic\": \"irure\",\n    \"damage\": 828,\n    \"element\": 1,\n    \"lv_required\": 94,\n    \"mana_consumption\": 208,\n    \"shield\": 823,\n    \"status\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -4734,6 +4758,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"name\": \"Vicente Pereira\",\n    \"race\": \"do veniam ipsum labore Lorem\",\n    \"atk\": 1,\n    \"def\": 1,\n    \"hp\": 1,\n    \"intelligence\": 1,\n    \"vigor\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -4909,6 +4934,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"name\": \"Marcos Oliveira\",\n    \"race\": \"dolor ullamco minim\",\n    \"atk\": 1,\n    \"def\": 1,\n    \"hp\": 1,\n    \"intelligence\": 1,\n    \"vigor\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -5012,6 +5038,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"name\": \"Carlos Batista\",\n    \"race\": \"mollit\",\n    \"atk\": 1,\n    \"def\": 1,\n    \"hp\": 1,\n    \"intelligence\": 1,\n    \"vigor\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -5300,6 +5327,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"race\": \"goblin\",\n    \"atk\": 70,\n    \"def\": 95,\n    \"hp\": 71,\n    \"intelligence\": 24,\n    \"mana\": 35,\n    \"vigor\": 26\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -5475,6 +5503,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"race\": \"elf\",\n    \"atk\": 12,\n    \"def\": 59,\n    \"hp\": 91,\n    \"intelligence\": 5,\n    \"mana\": 189,\n    \"vigor\": 69\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -5578,6 +5607,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"race\": \"goblin\",\n    \"atk\": 39,\n    \"def\": 21,\n    \"hp\": 99,\n    \"intelligence\": 26,\n    \"mana\": 346,\n    \"vigor\": 60\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -5866,6 +5896,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"name\": \"Sílvia Melo\",\n    \"atk\": 46,\n    \"def\": 973,\n    \"hp\": 83,\n    \"intelligence\": 605,\n    \"vigor\": 171,\n    \"magic\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -6041,6 +6072,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"name\": \"Alexandre Santos\",\n    \"atk\": 11,\n    \"def\": 733,\n    \"hp\": 290,\n    \"intelligence\": 872,\n    \"vigor\": 789,\n    \"magic\": 100\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -6144,6 +6176,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"name\": \"Samuel Pereira\",\n    \"atk\": 564,\n    \"def\": 812,\n    \"hp\": 815,\n    \"intelligence\": 509,\n    \"vigor\": 796,\n    \"magic\": 1\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -6448,6 +6481,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"status\": \"heal\",\n    \"duration\": 100\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -6551,6 +6585,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"status\": \"sleep\",\n    \"duration\": 100\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -6814,6 +6849,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"status\": \"buff_magic\",\n    \"duration\": 100\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -6926,6 +6962,7 @@
                         "method": "PUT",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"rarity\": \"epic\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -7117,6 +7154,7 @@
                         "method": "PATCH",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"rarity\": \"legendary\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -7380,6 +7418,7 @@
                         "method": "POST",
                         "body": {
                             "mode": "raw",
+                            "raw": "{\n    \"rarity\": \"common\"\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
