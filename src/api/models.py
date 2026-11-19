@@ -47,69 +47,6 @@ class UserModel(Base):
 
 
 # ============================================================================
-# TaskFlow / Project & Task Models (STYLEGUIDE.md & SPEC.md 1:N Relationship)
-# ============================================================================
-
-
-class ProjectModel(Base):
-    """Project entity with 1:N relationship to tasks."""
-
-    __tablename__ = "projects"
-
-    id: Mapped[str] = mapped_column(
-        String(36),
-        primary_key=True,
-        default=lambda: str(uuid.uuid4()),
-    )
-    name: Mapped[str] = mapped_column(String(100), nullable=False)
-    description: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    updated_at: Mapped[datetime] = mapped_column(
-        DateTime,
-        default=datetime.utcnow,
-        onupdate=datetime.utcnow,
-    )
-
-    tasks: Mapped[list["TaskModel"]] = relationship(
-        "TaskModel",
-        back_populates="project",
-        cascade="all, delete-orphan",
-    )
-
-
-class TaskModel(Base):
-    """Task entity belonging to a project."""
-
-    __tablename__ = "tasks"
-
-    id: Mapped[str] = mapped_column(
-        String(36),
-        primary_key=True,
-        default=lambda: str(uuid.uuid4()),
-    )
-    title: Mapped[str] = mapped_column(String(150), nullable=False)
-    description: Mapped[str | None] = mapped_column(String(500), nullable=True)
-    status: Mapped[str] = mapped_column(String(50), default="TODO")
-    priority: Mapped[str] = mapped_column(String(50), default="MEDIUM")
-    due_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
-    project_id: Mapped[str | None] = mapped_column(
-        ForeignKey("projects.id"),
-        nullable=True,
-    )
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    updated_at: Mapped[datetime] = mapped_column(
-        DateTime,
-        default=datetime.utcnow,
-        onupdate=datetime.utcnow,
-    )
-
-    project: Mapped[Optional["ProjectModel"]] = relationship(
-        "ProjectModel",
-        back_populates="tasks",
-    )
-
-
-# ============================================================================
 # Reference & Catalog Models
 # ============================================================================
 
