@@ -34,11 +34,9 @@ from src.api.routers import (
     jobs,
     magics,
     monsters,
-    projects,
     races,
     rarities,
     status_effects,
-    tasks,
     weapons,
 )
 
@@ -120,8 +118,6 @@ app.include_router(races.router)
 app.include_router(rarities.router)
 app.include_router(body_parts.router)
 app.include_router(status_effects.router)
-app.include_router(tasks.router)
-app.include_router(projects.router)
 
 
 # ---------------------------------------------------------------------------
